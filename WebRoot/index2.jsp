@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<input type="submit" value="Post方式请求HelloServlet">
     </form>
     
-    <h1>Servlet生命周期</h1>
+    <h1>JSP指令</h1>
     <hr>
     <a href="servlet/TestServlet1">Get方式请求TestServlet1</a>
     <!-- HTM注释，客户端可见 -->
@@ -80,5 +80,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     你好，<%= name %><br />
   10+20=<%= add(10,20) %><br />
     九九乘法表(表达式方式打印)：<br/><%= function(9) %>
+    
+    <h1>JSP九大内置对象</h1>
+    <hr />
+    
   </body>
 </html>
