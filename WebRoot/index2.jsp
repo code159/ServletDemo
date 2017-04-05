@@ -32,7 +32,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     <h1>JSP指令</h1>
     <hr>
-    <a href="servlet/TestServlet1">Get方式请求TestServlet1</a>
+    <a href="servlet/TestServlet1">Get方式请求TestServlet1</a><br/>
+    <a href="servlet/MultiplicationTableServlet">Get方式请求MultiplicationTableServlet</a><br/>
     <!-- HTM注释，客户端可见 -->
     <%-- JSP注释，客户端不可见 --%>
     
@@ -41,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	//声明变量
     	String name="李宇彬";
     	String s="";
-    	SimpleDateFormat sdf=new SimpleDateFormat("yyyy年MM月dd日");
+    	SimpleDateFormat sdf=new SimpleDateFormat("yyyy年MM月dd日HH时mm分ss秒");
     	//声明方法
     	int add(int x,int y){
     		return x+y;
@@ -72,17 +73,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    out.println("3+2="+add(3,2));
 	    //通过html的<br/>标签实现换行
 	    out.println("当前日期是："+sdf.format(new Date())+"<br/>");
-	    out.println("九九乘法表(脚本方式打印)："+"<br/>");
+	    out.println("九九乘法表(JSP脚本方式打印)："+"<br/>");
 	    function2(out);
     %>
     <br />
     <!-- JSP表达式 -->
     你好，<%= name %><br />
   10+20=<%= add(10,20) %><br />
-    九九乘法表(表达式方式打印)：<br/><%= function(9) %>
-    
-    <h1>JSP九大内置对象</h1>
-    <hr />
+    九九乘法表(JSP表达式方式打印)：<br/><%= function(9) %>
     
   </body>
 </html>

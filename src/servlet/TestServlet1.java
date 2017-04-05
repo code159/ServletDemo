@@ -10,34 +10,18 @@ import javax.servlet.http.HttpServletResponse;
 
 public class TestServlet1 extends HttpServlet {
 
-	/**
-	 * Constructor of the object.
-	 */
 	public TestServlet1() {
-		System.out.println("TestServlet1¹¹Ôì·½·¨±»Ö´ĞĞ...");
+		System.out.println("TestServlet1æ„é€ å™¨æ‰§è¡Œ...");
 	}
 
-	/**
-	 * Destruction of the servlet. <br>
-	 */
 	public void destroy() {
-		System.out.println("TestServlet1Ïú»Ù·½·¨±»Ö´ĞĞ...");
+		System.out.println("TestServlet1é”€æ¯...");
 	}
 
-	/**
-	 * The doGet method of the servlet. <br>
-	 *
-	 * This method is called when a form has its tag value method equals to get.
-	 * 
-	 * @param request the request send by the client to the server
-	 * @param response the response send by the server to the client
-	 * @throws ServletException if an error occurred
-	 * @throws IOException if an error occurred
-	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		System.out.println("TestServlet1µÄdoGet()·½·¨±»Ö´ĞĞ...");
+		System.out.println("TestServlet1å¤„ç†Getè¯·æ±‚...");
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
@@ -47,37 +31,22 @@ public class TestServlet1 extends HttpServlet {
 		out.print("    This is ");
 		out.print(this.getClass());
 		out.println(", using the GET method");
-		out.println("<h1>ÄãºÃ£¬ÕâÊÇTestServlet1!</h1>");
+		out.println("<h1>è¿™æ˜¯TestServlet1!</h1>");
 		out.println("  </BODY>");
 		out.println("</HTML>");
 		out.flush();
 		out.close();
 	}
 
-	/**
-	 * The doPost method of the servlet. <br>
-	 *
-	 * This method is called when a form has its tag value method equals to post.
-	 * 
-	 * @param request the request send by the client to the server
-	 * @param response the response send by the server to the client
-	 * @throws ServletException if an error occurred
-	 * @throws IOException if an error occurred
-	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("TestServlet1µÄdoPost()·½·¨±»Ö´ĞĞ...");
+		System.out.println("TestServlet1å¤„ç†Postè¯·æ±‚");
 		doGet(request,response);
 	}
 
-	/**
-	 * Initialization of the servlet. <br>
-	 *
-	 * @throws ServletException if an error occurs
-	 */
 	public void init() throws ServletException {
 		// Put your code here
-		System.out.println("TestServlet1 init()·½·¨±»Ö´ĞĞ...");
+		System.out.println("TestServlet1 init()æ‰§è¡Œ...");
 	}
 
 }

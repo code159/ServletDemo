@@ -13,18 +13,18 @@ public class HelloServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("处理Get请求");
+		System.out.println("澶勭悊Get璇锋眰");
 		PrintWriter out = response.getWriter();
-		//指定文件格式
+		//指锟斤拷锟侥硷拷锟斤拷式
 		response.setContentType("text/html;charset=utf-8");
-		// 如果不指定文件格式的话，下面那些内容将直接作为文本输出
+		// 锟斤拷锟斤拷锟街革拷锟斤拷募锟斤拷锟绞斤拷幕锟斤拷锟斤拷锟斤拷锟斤拷锟叫╋拷锟斤拷萁锟街憋拷锟斤拷锟轿拷谋锟斤拷锟斤拷
 		out.println("<strong>Hello Servlet! Get</strong><br />");
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("处理Post请求");
+		System.out.println("澶勭悊Post璇锋眰");
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html;charset=utf-8");
 		out.println("<strong>Hello Servlet! Post</strong><br />");

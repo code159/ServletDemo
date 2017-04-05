@@ -20,6 +20,15 @@
     <servlet-class>servlet.TestServlet1</servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
+  <servlet>
+    <servlet-name>MultiplicationTableServlet</servlet-name>
+    <servlet-class>servlet.MultiplicationTableServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>FileServlet</servlet-name>
+    <servlet-class>servlet.FileServlet</servlet-class>
+  </servlet>
+  
 
   <servlet-mapping>
     <servlet-name>HelloServlet</servlet-name>
@@ -28,5 +37,13 @@
   <servlet-mapping>
     <servlet-name>TestServlet1</servlet-name>
     <url-pattern>/servlet/TestServlet1</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MultiplicationTableServlet</servlet-name>
+    <url-pattern>/servlet/MultiplicationTableServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FileServlet</servlet-name>
+    <url-pattern>/servlet/FileServlet</url-pattern>
   </servlet-mapping>
 </web-app>
