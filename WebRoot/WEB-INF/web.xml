@@ -28,8 +28,11 @@
     <servlet-name>FileServlet</servlet-name>
     <servlet-class>servlet.FileServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>SparkWordCountServlet</servlet-name>
+    <servlet-class>servlet.SparkWordCountServlet</servlet-class>
+  </servlet>  
   
-
   <servlet-mapping>
     <servlet-name>HelloServlet</servlet-name>
     <url-pattern>/servlet/HelloServlet</url-pattern>
@@ -46,4 +49,8 @@
     <servlet-name>FileServlet</servlet-name>
     <url-pattern>/servlet/FileServlet</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SparkWordCountServlet</servlet-name>
+    <url-pattern>/servlet/SparkWordCountServlet</url-pattern>
+  </servlet-mapping>  
 </web-app>
