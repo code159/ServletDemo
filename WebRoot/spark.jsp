@@ -7,6 +7,12 @@
 <title>spark运算结果前台显示</title>
 </head>
 <body>
-	<a href="servlet/SparkWordCountServlet">显示计数结果</a>
+	<a href="servlet/SparkWordCountServlet">显示wordcount结果（Java Api读取文件）</a>
+	
+	<h2>Post表单提交到spark.jsp</h2>
+	<form action="servlet/SparkWordCountServlet" method="POST">
+	数据: <input type="text" name="content">
+	<input type="submit" value="提交" />
+	</form>
 </body>
 </html>

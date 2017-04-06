@@ -18,8 +18,8 @@ public class FileServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("FileServlet处理Get请求...");
 		Scanner in = new Scanner(Paths.get("E:\\src\\Hello.java"));
-        String s5 = null;
         PrintWriter out=resp.getWriter();
+        System.out.println("request的方法是："+req.getMethod());
         while (in.hasNextLine()) {
             out.println(in.nextLine());
         }
