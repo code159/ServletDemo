@@ -11,8 +11,21 @@
 	
 	<h2>Post表单提交到spark.jsp</h2>
 	<form action="servlet/SparkWordCountServlet" method="POST">
-	数据: <input type="text" name="content">
+	数据行: <input type="text" name="content">
+	<input type="submit" value="提交" />		 
+	<div>
+	数据集:
+	<textarea name="contents" cols=40 rows=4></textarea>
 	<input type="submit" value="提交" />
+	</div>
+	</form>
+	
+	<form action="servlet/SparkWordCountServlet" mathod="post" enctype="multpart/form-data">
+	<div>
+	数据文件:
+	<input type="file" name="contentFile"></input>
+	<input type="submit" value="提交" />
+	</div>
 	</form>
 </body>
 </html>

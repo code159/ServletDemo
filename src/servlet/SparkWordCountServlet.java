@@ -45,6 +45,7 @@ public class SparkWordCountServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println(this.getClass()+"处理Get请求...");
+		System.out.println(System.getProperty("java.classpath"));
 		SparkConf conf = new SparkConf().setAppName("WordCount");
 		conf.setMaster("local");
 		JavaSparkContext jsc = new JavaSparkContext(conf);
@@ -88,6 +89,7 @@ public class SparkWordCountServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println(this.getClass()+"处理Post请求...");
+		System.out.println(System.getProperty("java.classpath"));
 		SparkConf conf = new SparkConf().setAppName("WordCountPost");
 		conf.setMaster("local");
 		JavaSparkContext jsc = new JavaSparkContext(conf);
@@ -95,7 +97,7 @@ public class SparkWordCountServlet extends HttpServlet {
 		PrintWriter out=response.getWriter();
 		
 		//解决乱码问题
-		String in = new String((request.getParameter("content")).getBytes("ISO-8859-1"),"UTF-8");
+		String in = new String((request.getParameter("contents")).getBytes("ISO-8859-1"),"UTF-8");
 //		String out = "E:\\src\\out.txt";
 		ArrayList al=new ArrayList();
 		al.add(in);
