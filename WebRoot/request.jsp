@@ -25,21 +25,36 @@
 	
 	String name2=null;
 	String url2=null;
+	String a="";
 	if(request.getMethod().equals("POST")){
 		// 解决中文乱码的问题
 		name2 = new String((request.getParameter("name2")).getBytes("ISO-8859-1"),"UTF-8");
 		url2=request.getParameter("url2");
+		
+		String[] cbs=request.getParameterValues("cb");
+		for(String cb:cbs){
+			a+=(cb+" ");
+		}		
 	}
+	
 %>
 <ul>
 <li><p><b>站点名:</b>
-<%
-%>
    <%=name2%>
 </p></li>
 <li><p><b>网址:</b>
    <%=url2%>
 </p></li>
+<li><p><b>类型:</b>
+   <%=a%>
+</p></li>
 </ul>
+类型：  
+  <%
+  		String[] cbs=request.getParameterValues("cb");
+   		for(String s:cbs){
+			out.println(s+" ");
+		}
+   %>
 </body>
 </html>
