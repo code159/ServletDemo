@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>菜鸟教程(runoob.com)</title>
+<title>requese内置对象</title>
 </head>
 <body>
 <h1>使用 GET 方法读取数据</h1>
@@ -20,6 +20,9 @@
 
 <h1>使用 POST 方法读取数据</h1>
 <%
+	//解决中文乱码问题
+	request.setCharacterEncoding("utf-8");
+	
 	String name2=null;
 	String url2=null;
 	if(request.getMethod().equals("POST")){
