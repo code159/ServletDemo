@@ -1,6 +1,5 @@
-package servlet;
+package spark;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.io.IOException;
@@ -97,40 +96,50 @@ public class SparkWordCountServlet extends HttpServlet {
 		JavaSparkContext jsc = new JavaSparkContext(conf);
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
+		// 使用http header解决乱码问题
+		request.setCharacterEncoding("utf-8");
 
 		// 解决乱码问题
-		String in = new String((request.getParameter("contents")).getBytes("ISO-8859-1"), "UTF-8");
+		// String in = new String((request.getParameter("content")).getBytes("ISO-8859-1"),"UTF-8");
 		// String out = "E:\\src\\out.txt";
-		ArrayList al = new ArrayList();
-		al.add(in);
-		JavaRDD<String> input = jsc.parallelize(al);
-		JavaRDD<String> words = input.flatMap(new FlatMapFunction<String, String>() {
-			@Override
-			public Iterable<String> call(String arg) throws Exception {
-				return Arrays.asList(arg.split(" "));
-			}
-		});
+		
+		//数据行
+		String in = request.getParameter("content");
+		//数据集
+		String inSet = request.getParameter("contents");
+		
+		
+		if (in != null) {
+			JavaRDD<String> input = jsc.parallelize(Arrays.asList(in));
+			JavaRDD<String> words = input.flatMap(new FlatMapFunction<String, String>() {
+				@Override
+				public Iterable<String> call(String arg) throws Exception {
+					return Arrays.asList(arg.split(" "));
+				}
+			});
 
-		JavaPairRDD<String, Integer> counts = words.mapToPair(new PairFunction<String, String, Integer>() {
-			@Override
-			public Tuple2<String, Integer> call(String x) throws Exception {
-				return new Tuple2(x, 1);
-			}
-		}).reduceByKey(new Function2<Integer, Integer, Integer>() {
-			@Override
-			public Integer call(Integer x, Integer y) throws Exception {
-				return x + y;
-			}
-		});
+			JavaPairRDD<String, Integer> counts = words.mapToPair(new PairFunction<String, String, Integer>() {
+				@Override
+				public Tuple2<String, Integer> call(String x) throws Exception {
+					return new Tuple2(x, 1);
+				}
+			}).reduceByKey(new Function2<Integer, Integer, Integer>() {
+				@Override
+				public Integer call(Integer x, Integer y) throws Exception {
+					return x + y;
+				}
+			});
 
-		// counts.saveAsTextFile(out);
+			// counts.saveAsTextFile(out);
 
-		List<Tuple2<String, Integer>> output = counts.collect();
-		for (Tuple2<?, ?> tuple : output) {
-			// System.out.println(tuple._1() + ": " + tuple._2());
-			out.println(tuple._1() + ": " + tuple._2() + "<br/>");
+			List<Tuple2<String, Integer>> output = counts.collect();
+			for (Tuple2<?, ?> tuple : output) {
+				// System.out.println(tuple._1() + ": " + tuple._2());
+				out.println(tuple._1() + ": " + tuple._2() + "<br/>");
+			}
+			jsc.stop();
 		}
-		jsc.stop();
+
 	}
 
 }

@@ -7,10 +7,10 @@
 <title>spark运算结果前台显示</title>
 </head>
 <body>
-	<a href="servlet/SparkWordCountServlet">显示wordcount结果（Java Api读取文件）</a>
+	<a href="spark/SparkWordCountServlet">显示wordcount结果（Java Api读取文件）</a>
 	
 	<h2>Post表单提交到spark.jsp</h2>
-	<form action="servlet/SparkWordCountServlet" method="POST">
+	<form action="spark/SparkWordCountServlet" method="POST">
 	数据行: <input type="text" name="content">
 	<input type="submit" value="提交" />		 
 	<div>
@@ -20,7 +20,7 @@
 	</div>
 	</form>
 	
-	<form action="servlet/SparkWordCountServlet" mathod="post" enctype="multpart/form-data">
+	<form action="spark/SparkWordCountServlet" mathod="post" enctype="multpart/form-data">
 	<div>
 	数据文件:
 	<input type="file" name="contentFile"></input>
