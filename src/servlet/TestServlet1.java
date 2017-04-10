@@ -18,8 +18,7 @@ public class TestServlet1 extends HttpServlet {
 		System.out.println("TestServlet1销毁...");
 	}
 
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		System.out.println("TestServlet1处理Get请求...");
 		response.setContentType("text/html;charset=utf-8");
@@ -38,10 +37,9 @@ public class TestServlet1 extends HttpServlet {
 		out.close();
 	}
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("TestServlet1处理Post请求");
-		doGet(request,response);
+		doGet(request, response);
 	}
 
 	public void init() throws ServletException {

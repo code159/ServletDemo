@@ -1,6 +1,5 @@
 package servlet;
 
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -24,36 +23,37 @@ import org.apache.spark.api.java.function.FlatMapFunction;
 import org.apache.spark.api.java.function.Function2;
 import org.apache.spark.api.java.function.PairFunction;
 
-
 /**
  * Servlet implementation class SparkWordCountServlet
  */
 @WebServlet("/SparkWordCountServlet")
 public class SparkWordCountServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SparkWordCountServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(this.getClass()+"处理Get请求...");
+	public SparkWordCountServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println(this.getClass() + "处理Get请求...");
 		System.out.println(System.getProperty("java.classpath"));
 		SparkConf conf = new SparkConf().setAppName("WordCount");
 		conf.setMaster("local");
 		JavaSparkContext jsc = new JavaSparkContext(conf);
 		response.setContentType("text/html;charset=utf-8");
-		PrintWriter out=response.getWriter();
-		
+		PrintWriter out = response.getWriter();
+
 		String in = "E:\\src\\count.txt";
-//		String out = "E:\\src\\out.txt";
+		// String out = "E:\\src\\out.txt";
 		JavaRDD<String> input = jsc.textFile(in);
 		JavaRDD<String> words = input.flatMap(new FlatMapFunction<String, String>() {
 			@Override
@@ -74,32 +74,34 @@ public class SparkWordCountServlet extends HttpServlet {
 			}
 		});
 
-//		counts.saveAsTextFile(out);
+		// counts.saveAsTextFile(out);
 
 		List<Tuple2<String, Integer>> output = counts.collect();
 		for (Tuple2<?, ?> tuple : output) {
-//			System.out.println(tuple._1() + ": " + tuple._2());
-			out.println(tuple._1() + ": " + tuple._2()+"<br/>");
+			// System.out.println(tuple._1() + ": " + tuple._2());
+			out.println(tuple._1() + ": " + tuple._2() + "<br/>");
 		}
 		jsc.stop();
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(this.getClass()+"处理Post请求...");
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println(this.getClass() + "处理Post请求...");
 		System.out.println(System.getProperty("java.classpath"));
 		SparkConf conf = new SparkConf().setAppName("WordCountPost");
 		conf.setMaster("local");
 		JavaSparkContext jsc = new JavaSparkContext(conf);
 		response.setContentType("text/html;charset=utf-8");
-		PrintWriter out=response.getWriter();
-		
-		//解决乱码问题
-		String in = new String((request.getParameter("contents")).getBytes("ISO-8859-1"),"UTF-8");
-//		String out = "E:\\src\\out.txt";
-		ArrayList al=new ArrayList();
+		PrintWriter out = response.getWriter();
+
+		// 解决乱码问题
+		String in = new String((request.getParameter("contents")).getBytes("ISO-8859-1"), "UTF-8");
+		// String out = "E:\\src\\out.txt";
+		ArrayList al = new ArrayList();
 		al.add(in);
 		JavaRDD<String> input = jsc.parallelize(al);
 		JavaRDD<String> words = input.flatMap(new FlatMapFunction<String, String>() {
@@ -121,12 +123,12 @@ public class SparkWordCountServlet extends HttpServlet {
 			}
 		});
 
-//		counts.saveAsTextFile(out);
+		// counts.saveAsTextFile(out);
 
 		List<Tuple2<String, Integer>> output = counts.collect();
 		for (Tuple2<?, ?> tuple : output) {
-//			System.out.println(tuple._1() + ": " + tuple._2());
-			out.println(tuple._1() + ": " + tuple._2()+"<br/>");
+			// System.out.println(tuple._1() + ": " + tuple._2());
+			out.println(tuple._1() + ": " + tuple._2() + "<br/>");
 		}
 		jsc.stop();
 	}

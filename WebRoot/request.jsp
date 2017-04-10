@@ -52,9 +52,11 @@
 类型：  
   <%
   		String[] cbs=request.getParameterValues("cb");
-   		for(String s:cbs){
-			out.println(s+" ");
-		}
+		if(cbs!=null){
+			for(String s:cbs){
+				out.println(s+" ");
+			}
+		}	
    %>
 </body>
 </html>
