@@ -82,5 +82,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   10+20=<%= add(10,20) %><br />
     九九乘法表(JSP表达式方式打印)：<br/><%= function(9) %>
     
+  <h1>Cookie实例</h1>
+  	<form action="CookieServer.jsp" method=GET>
+	站点名: <input type="text" name="name">
+	<br />
+	网址: <input type="text" name="url" />
+	<input type="submit" value="提交" />
+	</form>
   </body>
 </html>
