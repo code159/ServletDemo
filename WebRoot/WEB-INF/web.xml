@@ -12,6 +12,11 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
+	
+	<!-- 设置会话超时时间为1分钟 -->
+	<session-config>
+		<session-timeout>1</session-timeout>
+	</session-config>
 
 	<filter>
 		<filter-name>LogFilter</filter-name>
